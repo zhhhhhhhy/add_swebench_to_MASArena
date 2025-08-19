@@ -1,0 +1,81 @@
+/eval.sh: line 2: set: pipefail: invalid option name
++ source $'/opt/miniconda3/bin/activate\r'
+/eval.sh: line 3: /opt/miniconda3/bin/activate: No such file or directory
++ conda activate $'testbed\r'
+
+CondaError: Run 'conda init' before 'conda activate'
+
++ cd $'/testbed\r'
+/eval.sh: line 5: cd: $'/testbed\r': No such file or directory
++ git config --global --add safe.directory $'/testbed\r'
++ cd $'/testbed\r'
+/eval.sh: line 7: cd: $'/testbed\r': No such file or directory
++ git $'status\r'
+git: 'status' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
++ git $'show\r'
+git: 'show' is not a git command. See 'git --help'.
+
+The most similar command is
+	show
++ git -c core.fileMode=false diff $'361bb8f786f112ee275be136795c0b1ecefff928\r'
+fatal: ambiguous argument '361bb8f786f112ee275be136795c0b1ecefff928?': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
++ source $'/opt/miniconda3/bin/activate\r'
+/eval.sh: line 11: /opt/miniconda3/bin/activate: No such file or directory
++ conda activate $'testbed\r'
+
+CondaError: Run 'conda init' before 'conda activate'
+
++ python -m pip install -e $'.\r'
+ERROR: . is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
++ git checkout 361bb8f786f112ee275be136795c0b1ecefff928 tests/backends/base/test_creation.py $'tests/migrations/test_executor.py\r'
+error: pathspec 'tests/migrations/test_executor.py?' did not match any file(s) known to git
++ git apply -v -
+Checking patch tests/backends/base/test_creation.py...
+error: while searching for:
+@mock.patch.object(connection, 'ensure_connection')?
+@mock.patch.object(connection, 'prepare_database')?
+@mock.patch('django.db.migrations.recorder.MigrationRecorder.has_table', return_value=False)?
+@mock.patch('django.db.migrations.executor.MigrationExecutor.migrate')?
+@mock.patch('django.core.management.commands.migrate.Command.sync_apps')?
+class TestDbCreationTests(SimpleTestCase):?
+    available_apps = ['backends.base.app_unmigrated']?
+?
+    def test_migrate_test_setting_false(self, mocked_sync_apps, mocked_migrate, *mocked_objects):?
+        test_connection = get_connection_copy()?
+        test_connection.settings_dict['TEST']['MIGRATE'] = False?
+        creation = test_connection.creation_class(test_connection)?
+
+error: patch failed: tests/backends/base/test_creation.py:57
+error: tests/backends/base/test_creation.py: patch does not apply
+Checking patch tests/migrations/test_executor.py...
+error: while searching for:
+            False,?
+        )?
+?
+?
+class FakeLoader:?
+    def __init__(self, graph, applied):?
+
+error: patch failed: tests/migrations/test_executor.py:759
+error: tests/migrations/test_executor.py: patch does not apply
++ : '>>>>> Start Test Output'
++ ./tests/runtests.py --verbosity 2 --settings=test_sqlite --parallel 1 backends.base.test_creation $'migrations.test_executor\r'
+Traceback (most recent call last):
+  File "/testbed/./tests/runtests.py", line 16, in <module>
+    import django
+ModuleNotFoundError: No module named 'django'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/testbed/./tests/runtests.py", line 18, in <module>
+    raise RuntimeError(
+RuntimeError: Django module not found, reference tests/README.rst for instructions.
++ : '>>>>> End Test Output'
++ git checkout 361bb8f786f112ee275be136795c0b1ecefff928 tests/backends/base/test_creation.py $'tests/migrations/test_executor.py\r'
+error: pathspec 'tests/migrations/test_executor.py?' did not match any file(s) known to git
